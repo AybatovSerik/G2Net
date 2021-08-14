@@ -1,6 +1,6 @@
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input
-from G2Net.custom_blocks import ConvBlockG2Net, BigConvBlock, BigConvBlock4Input, Dropout4Input
+from custom_blocks import ConvBlockG2Net, BigConvBlock, BigConvBlock4Input, Dropout4Input
 
 
 input_0 = Input(shape=[4096, 1])

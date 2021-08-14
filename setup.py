@@ -5,7 +5,7 @@ print(find_packages(where="G2Net"))
 setup(
     name='G2Net',
     version=G2Net.__version__,
-    # packages=find_packages(where="G2Net"),
+    packages=['G2Net'],
     license='MIT',
     classifiers=[
         'License :: OSI Approved :: MIT License',
