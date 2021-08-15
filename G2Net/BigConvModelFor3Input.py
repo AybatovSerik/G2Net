@@ -1,4 +1,4 @@
-from custom_blocks import BigConvBlock4Input, Dropout4Input
+from G2Net.G2Net.custom_blocks import BigConvBlock4Input, Dropout4Input
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Flatten, Dense, Concatenate
 
