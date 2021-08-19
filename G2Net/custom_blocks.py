@@ -53,7 +53,7 @@ class BigConvBlock(tf.keras.Model):
                                            )
         self.residual_conv_block = Conv1D(filters=filters_2, kernel_size=kernel_size_2,
                                           padding='same', activation=activation)
-        self.residual_pooling = MaxPool1D(pool_size=pooling_factor*2, strides=pooling_factor*2, padding='same')
+        self.residual_pooling = MaxPool1D(pool_size=pooling_factor**2, strides=pooling_factor**2, padding='same')
         self.add_block = Add()
 
     def call(self, input_tensor):

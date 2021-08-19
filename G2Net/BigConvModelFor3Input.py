@@ -1,6 +1,6 @@
 from G2Net.G2Net.custom_blocks import BigConvBlock4Input, Dropout4Input
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Flatten, Dense, Concatenate
+from tensorflow.keras.layers import Input, Flatten, Dense, Concatenate, Dropout
 
 
 def ConvModelFor3Input(big_conv_num=5,
@@ -10,7 +10,8 @@ def ConvModelFor3Input(big_conv_num=5,
                        activations=['relu','relu','relu','relu','relu'],
                        normalization_types=['batch']*5,
                        conv_nums=[[2,2]]*5,
-                       dropouts=[0.2]*5):
+                       dropouts=[0.2]*5,
+                       dropout_head=0.2):
     assert len(filters_sequence)==big_conv_num, f"filters for {len(filters_sequence)} blocks, but big_conv_num is {big_conv_num}"
     assert len(kernel_size_sequence)==big_conv_num, f"kernel_size_sequence for {len(kernel_size_sequence)} blocks, but big_conv_num is {big_conv_num}"
     assert len(pooling_factors)==big_conv_num, f"pooling_factors for {len(pooling_factors)} blocks, but big_conv_num is {big_conv_num}"
@@ -42,6 +43,7 @@ def ConvModelFor3Input(big_conv_num=5,
     x_2 = Flatten()(x_2)
     x_all = Flatten()(x_all)
     flat_all = Concatenate()([x_0, x_1, x_2, x_all])
+    flat_all = Dropout(dropout_head)(flat_all)
     output = Dense(1, activation='sigmoid')(flat_all)
     return Model(inputs=[input_0, input_1, input_2], outputs=output)
 
