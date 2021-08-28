@@ -126,7 +126,7 @@ def ConvModelFor3InputOneFlow(big_conv_num=5,
                               conv_num_1=conv_nums[block_num][0],
                               conv_num_2=conv_nums[block_num][1]
                                                   )(x_all)
-        x_all = Dropout(dropout=dropouts[block_num])(x_all)
+        x_all = Dropout(dropouts[block_num])(x_all)
     x_all = Flatten()(x_all)
     flat_all = Dropout(dropout_head)(x_all)
     output = Dense(1, activation='sigmoid')(flat_all)
